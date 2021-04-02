@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech To Text</title>
+</head>
+<body>
+    <button onclick="startListening()" type="button">Get Audio</button>
+    <p class="output">Word Said: <span id="output"></span></p>
+</body>
+</html>
+
+<script>
+    var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
+    var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
+    var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
+
+    var words = [ 'alpha', 'beta', 'gamma' ]
+    var grammar = '#JSGF V1.0; grammar words; public <word> = ' + words.join(' | ') + ' ;'
+
+    var recognition = new SpeechRecognition();
+    var speechRecognitionList = new SpeechGrammarList();
+
+    speechRecognitionList.addFromString(grammar, 1);
+
+    recognition.grammars = speechRecognitionList;
+    recognition.continuous = false;
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    var diagnostic = document.querySelector('.output');
+
+    function startListening() {
+        recognition.start();
+    }
+
+    recognition.onresult = function(event) {
+        var word = event.results[0][0].transcript;
+        document.getElementById("output").innerText = word
+    }
+
+</script>

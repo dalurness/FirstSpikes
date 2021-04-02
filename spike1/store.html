@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Storing Client Values</title>
+</head>
+<body>
+  <input id="userName1" placeholder="store whatever value is written here in a cookie" style="width:95%"><p>
+  <input id="userName2" placeholder="store whatever value is written here in local storage" style="width:95%"><p>
+  <button onclick="storeValues()">Store the values now</button>
+
+<script>
+  function storeValues() {
+
+    // TODO: add storing userName1 value in cookie "userName"
+    console.log(document.getElementById("userName1").value)
+    document.cookie = "userName=" + document.getElementById("userName1").value
+
+    // TODO: add storing userName2 value in localStorage "userName
+    console.log(document.getElementById("userName2").value)
+    localStorage.setItem("userName", document.getElementById("userName2").value)
+
+    // TODO: alert and console.log are debug statements to get you started. Remove them.
+  }
+</script>
+</body>
+</html>

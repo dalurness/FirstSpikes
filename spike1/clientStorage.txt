@@ -1,0 +1,11 @@
+Dallin Urness
+
+Difference between a cookie and local storage.
+
+The purpose of a cookie is to store values that are going to be needed by the server regularly, like authentication.
+Cookies are small in size and are sent with each request to the server, so extra values not needed by the server
+should not be stored there. Cookies have an expiration date and are cleared automatically.
+
+Local storage is only accessible client-side and is meant to hold values used by the client. Local storage has much
+more space and can hold much more data compared to cookies. Cookies can generally hold 4096 bytes, while
+local storage can hold as much as 5MB per site.Local storage does not expire and will stay until manually cleared. 

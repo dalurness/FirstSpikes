@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loading Client Values</title>
+</head>
+
+<body>
+  <h1>Hi <span id="userName1" style="color:red">unknown user</span>, looks like you understand <b style="color:blue">cookies</b></h1>
+  <h1>Hi <span id="userName2" style="color:red">unknown user</span>, looks like you understand <b style="color:blue">local storage</b></h1>
+  
+<script>
+
+  function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+  function loadFromCookie() { //https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
+    // TODO: change the hard coded value nobody to whatever the user stored in cookie "userName" 
+    document.getElementById("userName1").innerText = getCookie("userName") //placeholder value to be replaced
+    // TODO: remove the first DON'T when this works
+  }
+
+  function loadFromLocalStorage() { //https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+    // TODO: change the hard coded value still nobody to whatever the user stored in local storage "userName" 
+    document.getElementById("userName2").innerText = localStorage.getItem("userName") //placeholder value to be replaced
+    // TODO: remove the first DON'T when this works
+  }
+
+  loadFromCookie()
+  loadFromLocalStorage()
+</script>
+</body>
+</html>
